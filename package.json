@@ -1,0 +1,20 @@
+{
+  "name": "devzone",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000D\u0000e\u0000v\u0000Z\u0000o\u0000n\u0000e\u0000\r\u0000 \u0000",
+  "type":"module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"nodemon api/index.js",
+    "start":"node api/index.js"
+  },
+  "keywords": [],
+
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
+  }
+}
