@@ -29,3 +29,17 @@ app.listen(5000, () => {
 
 app.use('/api/user', userRoutes);
 app.use('/api/auth',authRoutes)
+
+
+
+// ERROR HANDLING
+app.use((err,req,res,next)=>{
+  const statusCode = err.statusCode || 500;
+  const message = err.message || 'Internal server error';
+  res.status(statusCode).json(
+    {
+      success :false,
+      statusCode,
+      message
+    })
+})
