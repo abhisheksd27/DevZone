@@ -5,24 +5,28 @@ import DashSidebar from '../components/DashSidebar'
 
 const Dashboard = () => {
   const location = useLocation()
-  const [tab, setTab]=useState('')
-  useEffect(()=>{
+  const [tab, setTab] = useState('')
+  useEffect(() => {
     const urlParams = new URLSearchParams(location.search)
-    const tabFromUrl= urlParams.get('tab')
-    if(tabFromUrl){
+    const tabFromUrl = urlParams.get('tab')
+    if (tabFromUrl) {
       setTab(tabFromUrl)
     }
-  },[location.search])
+  }, [location.search])
+
   return (
     <div className='min-h-screen flex flex-col md:flex-row'>
       <div className='md:w-56'>
         {/* sidebar */}
-        <DashSidebar/>
-
+        <DashSidebar />
       </div>
-      <div className=''>
+      <div className='flex-grow flex justify-center'>
         {/* profile */}
-        {tab==='profile' && <DashProfile/>}
+        {tab === 'profile' && (
+          <div className='max-w-lg mx-auto w-full'>
+            <DashProfile />
+          </div>
+        )}
       </div>
     </div>
   )
