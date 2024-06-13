@@ -7,7 +7,7 @@ function OnlyAdminPrivateRoute() {
     const {currentUser} =useSelector((state)=>state.user)
 
 
-  return currentUser.isadmin ? <Outlet/>: <Navigate to='/sign-in'/>;
+  return currentUser.isAdmin ? <Outlet/>: <Navigate to='/sign-in'/>;
   
 }
 
