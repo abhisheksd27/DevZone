@@ -15,9 +15,10 @@ import {
   deleteUserFailure,
   signoutSuccess,
 } from '../redux/user/userSlice';
+import { Link } from 'react-router-dom';
 
 const DashProfile = () => {
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser ,error ,loading} = useSelector((state) => state.user);
   const [imagesFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const filePickerRef = useRef();
@@ -186,9 +187,25 @@ const DashProfile = () => {
         <TextInput type='text' id='username' placeholder='username' defaultValue={currentUser.username} onChange={handleChange} />
         <TextInput type='email' id='email' placeholder='email' defaultValue={currentUser.email} onChange={handleChange} />
         <TextInput type='password' id='password' placeholder='password' onChange={handleChange} />
-        <Button type='submit' gradientDuoTone='purpleToBlue' outline>
-          Update Profile
+        <Button
+          type='submit'
+          gradientDuoTone='purpleToBlue'
+          outline
+          disabled={loading || imageFileUploading}
+        >
+          {loading ? 'Loading...' : 'Update'}
         </Button>
+        {currentUser.isadmin && (
+          <Link to={'/create-post'}>
+            <Button
+              type='button'
+              gradientDuoTone='purpleToPink'
+              className='w-full'
+            >
+              Create a post
+            </Button>
+          </Link>
+        )}
         {updateUserError && <Alert color='failure'>{updateUserError}</Alert>}
         {updateUserSuccess && <Alert color='success'>{updateUserSuccess}</Alert>}
       </form>
