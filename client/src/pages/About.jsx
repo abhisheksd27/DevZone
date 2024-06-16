@@ -5,6 +5,8 @@ import Skills from "../components/Skills";
 import { Button } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 
+import GithubHeatMap from "../components/GithubHeatMap";
+
 
 
 export default function About() {
@@ -27,6 +29,7 @@ export default function About() {
       </div>
      
         <br/>
+        <GithubHeatMap/>
     </div>
   );
 }

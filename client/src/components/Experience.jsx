@@ -15,8 +15,16 @@ const experiences = [
     company: 'Varcons Technologies',
     location: 'India',
     description: "During my internship at Varcons Technologies, I've immersed myself in machine learning, emphasizing hands-on implementation and problem-solving. I've become proficient in utilizing frameworks like NumPy, Pandas, and Matplotlib, mastering data cleaning methodologies and implementing algorithms including KNN, Decision Trees, and Gaussian Naive Bayes."
+  },
+  {
+    date: '2024 - Present',
+    role: 'Freelance Developer',
+    company: 'Self-Employed',
+    location: 'Remote',
+    description: "As a freelance developer, I've undertaken various projects including React development, MERN stack development, web and app design, and poster designing. These projects have enhanced my skills in full-stack development and design, allowing me to deliver high-quality solutions to clients."
   }
 ];
+
 
 const Experience = () => {
   return (

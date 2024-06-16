@@ -21,7 +21,7 @@ const CallToAction = () => {
         </p>
         <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
           <Button gradientDuoTone='purpleToPink' className='rounded-tl-xl rounded-bl-none'>
-            <a href="../assets/Abhishek_shankar.pdf" download>
+            <a href="/Abhishek_shankar.pdf" download>
               Download Resume
             </a>
           </Button>
@@ -29,7 +29,7 @@ const CallToAction = () => {
       </div>
       {/* Right Column */}
       <div className="p-7 flex-1">
-        <img src={logo} alt="JavaScript" className='w-full h-auto sm:max-w-xs rounded-lg shadow-md'/>
+        <img src={logo} alt="Abhishek Shankar" className='w-full h-auto sm:max-w-xs rounded-lg shadow-md'/>
       </div>
     </div>
   );

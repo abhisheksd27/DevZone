@@ -1,12 +1,14 @@
 import React from 'react';
 import { FaPython, FaHtml5, FaCss3Alt, FaJs, FaReact, FaDatabase, FaGitAlt, FaGithub, FaDocker, FaChartBar, FaGoogle, FaMoon } from 'react-icons/fa';
-import { SiCplusplus, SiDjango, SiMongodb, SiMysql, SiPostgresql, SiTailwindcss, SiBootstrap, SiVisualstudiocode, SiPycharm, SiFigma, SiCanva, SiNumpy, SiPandas, SiRedux, SiFirebase, SiJsonwebtokens } from 'react-icons/si';
+import { SiC, SiCplusplus, SiDjango, SiMongodb, SiMysql, SiPostgresql, SiTailwindcss, SiBootstrap, SiVisualstudiocode, SiPycharm, SiFigma, SiCanva, SiNumpy, SiPandas, SiRedux, SiFirebase, SiJsonwebtokens } from 'react-icons/si';
 
 const skills = [
   { name: 'Python', icon: <FaPython />, level: '75%' },
-  { name: 'HTML & CSS', icon: <><FaHtml5 /><FaCss3Alt /></>, level: '70%' },
+  { name: 'HTML', icon: <FaHtml5 />, level: '70%' },
+  { name: 'CSS', icon: <FaCss3Alt />, level: '70%' },
   { name: 'JavaScript', icon: <FaJs />, level: '50%' },
-  { name: 'C & C++', icon: <SiCplusplus />, level: '50%' },
+  { name: 'C', icon: <SiC />, level: '50%' },
+  { name: 'C++', icon: <SiCplusplus />, level: '50%' },
   { name: 'Django', icon: <SiDjango />, level: '50%' },
   { name: 'React', icon: <FaReact />, level: '50%' },
   { name: 'MongoDB', icon: <SiMongodb />, level: '50%' },
@@ -14,7 +16,7 @@ const skills = [
   { name: 'PostgreSQL', icon: <SiPostgresql />, level: '60%' },
   { name: 'Tailwind CSS', icon: <SiTailwindcss />, level: '70%' },
   { name: 'Bootstrap 5', icon: <SiBootstrap />, level: '80%' },
-  { name: 'GitHub', icon: <><FaGithub /></>, level: '70%' },
+  { name: 'GitHub', icon: <FaGithub />, level: '70%' },
   { name: 'Git', icon: <FaGitAlt />, level: '90%' },
   { name: 'VS Code', icon: <SiVisualstudiocode />, level: '90%' },
   { name: 'PyCharm', icon: <SiPycharm />, level: '70%' },
