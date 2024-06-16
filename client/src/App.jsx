@@ -19,6 +19,7 @@ import Search from './pages/Search';
 
 
 
+
 const App = () => {
   return (
     <BrowserRouter>
