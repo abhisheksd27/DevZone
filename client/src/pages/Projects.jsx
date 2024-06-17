@@ -126,7 +126,6 @@ const projects = [
   
 ];
 const Projects = () => {
-
   const groupedProjects = projects.reduce((acc, project) => {
     if (!acc[project.type]) {
       acc[project.type] = [];
@@ -145,9 +144,9 @@ const Projects = () => {
           <h2 className='text-2xl font-bold mt-10 mb-5 text-center text-gradient bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 animate-pulse rounded-lg'>{type}</h2>
           <div className='flex flex-wrap justify-center gap-6'>
             {groupedProjects[type].map((project, idx) => (
-              <div key={idx} className='border p-5 rounded-lg shadow-md flex flex-col items-center max-w-md'>
-                <img src={project.image} alt={project.name} className='w-full h-48 object-cover rounded-lg mb-4 ' />
-                <h3 className='text-xl font-semibold mb-2 text-center text-gradient bg-gradient-to-r from-green-400 to-blue-500 animate-pulse rounded-lg p-2 '>{project.name}</h3>
+              <div key={idx} className='project-card border p-5 rounded-lg shadow-md flex flex-col items-center max-w-md transition duration-300 ease-in-out transform hover:scale-105'>
+                <img src={project.image} alt={project.name} className='w-full h-48 object-cover rounded-lg mb-4' />
+                <h3 className='text-xl font-semibold mb-2 text-center text-gradient bg-gradient-to-r from-green-400 to-blue-500 animate-pulse rounded-lg p-2'>{project.name}</h3>
                 <div className='mb-2 text-center'>
                   <strong className='text-lg text-gray-700'>Tech Stack:</strong> {project.techStack.join(', ')}
                 </div>
