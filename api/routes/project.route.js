@@ -9,9 +9,9 @@ import {
 
 const router = express.Router();
 
-router.post('/create',verifyToken, createProject);
+router.post('/create', verifyToken, createProject);
 router.get('/getprojects', getProjects);
-router.put('/updateproject/:projectId/:userId',verifyToken, updateProject);
-router.delete('/deleteproject/:projectId/:userId',verifyToken, deleteProject);
+router.put('/updateproject/:projectId/:userId', verifyToken, updateProject);
+router.delete('/deleteproject/:projectId/:userId', verifyToken, deleteProject);
 
 export default router;

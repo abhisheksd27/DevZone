@@ -40,7 +40,8 @@ const App = () => {
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/update-post/:postId" element={<UpdatePost />} />
           <Route path="/create-project" element={<CreateProject />} />
-          <Route exact path='/projects/edit/:projectId' component={UpdateProject} />
+    
+          <Route path="/update-project/:projectId" element={<UpdateProject />} />
           {/* Add more admin-only routes as needed */}
         </Route>
         

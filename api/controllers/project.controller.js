@@ -70,25 +70,22 @@ export const getProjects = async (req, res, next) => {
 };
 
 export const updateProject = async (req, res, next) => {
-  if (!req.user.isAdmin || req.user.id !== req.params.userId) {
+  if (!req.user.isAdmin && req.user.id !== req.params.userId) {
     return next(errorHandler(403, 'You are not allowed to update this project'));
   }
+
   try {
-    const updatedProject =await Project.findByIdAndUpdate(
+    const updatedProject = await Project.findByIdAndUpdate(
       req.params.projectId,
-      {
-        $set: {
-         ...req.body, // This should update all fields sent in the request
-        },
-      },
+      { $set: req.body },
       { new: true }
-    )
+    );
     res.status(200).json(updatedProject);
   } catch (error) {
     next(error);
   }
-
 };
+
 
 export const deleteProject = async (req, res, next) => {
   if (!req.user.isAdmin || req.user.id !== req.params.userId) {
