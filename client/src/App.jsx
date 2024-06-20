@@ -15,34 +15,39 @@ import UpdatePost from './pages/UpdatePost';
 import PostPage from './pages/PostPage';
 import ScrollToTop from './components/ScrollToTop';
 import Search from './pages/Search';
-
-
-
-
+import CreateProject from './pages/CreateProject';
+import UpdateProject from './pages/UpdateProject';
 
 const App = () => {
   return (
     <BrowserRouter>
-    <ScrollToTop/>
-    <Header/>
+      <ScrollToTop /> {/* Component to scroll to top on route change */}
+      <Header /> {/* Your application header component */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
-        <Route path='/search' element={<Search />} />
-        <Route element={<PrivateRoute/>}>
+        <Route path="/search" element={<Search />} />
+        
+        {/* Private routes accessible only to authenticated users */}
+        <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
-        <Route element={<OnlyAdminPrivateRoute/>}>
+        
+        {/* Routes accessible only to admin users */}
+        <Route element={<OnlyAdminPrivateRoute />}>
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/update-post/:postId" element={<UpdatePost />} />
+          <Route path="/create-project" element={<CreateProject />} />
+          <Route exact path='/projects/edit/:projectId' component={UpdateProject} />
+          {/* Add more admin-only routes as needed */}
         </Route>
         
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/post/:postSlug" element={<PostPage />} />
+        <Route path="/projects" element={<Projects />} /> {/* Route to display projects */}
+        <Route path="/post/:postSlug" element={<PostPage />} /> {/* Route to display a single post */}
       </Routes>
-      <FooterComponent/>
+      <FooterComponent /> {/* Your application footer component */}
     </BrowserRouter>
   );
 };

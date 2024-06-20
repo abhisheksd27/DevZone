@@ -1,7 +1,7 @@
 import express from 'express';
 import { verifyToken } from '../utils/verifyUser.js';
 import { create,
-     deletepost, 
+     deletepost,  
      getposts, 
      updatepost 
     } from '../controllers/post.controller.js';

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { Alert, Button, FileInput, Select, TextInput } from 'flowbite-react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import { useState } from 'react'; 
-import app from "../firebase"
+import { useState } from 'react';
+import app from "../firebase";
 import {
   getDownloadURL,
   getStorage,
@@ -14,18 +12,15 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate } from 'react-router-dom';
 
-const CreatePost = () => {
-
+const CreateProject = () => {
   const [file, setFile] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [formData, setFormData] = useState({});
-  const [publishError, setPublishError] = useState(null);
+  const [createError, setCreateError] = useState(null);
   const navigate = useNavigate();
 
-  
-
-  const handleUpdloadImage = async () => {
+  const handleUploadImage = async () => {
     try {
       if (!file) {
         setImageUploadError('Please select an image');
@@ -65,7 +60,7 @@ const CreatePost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/post/create', {
+      const res = await fetch('/api/projects/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,48 +69,95 @@ const CreatePost = () => {
       });
       const data = await res.json();
       if (!res.ok) {
-        setPublishError(data.message);
+        setCreateError(data.message);
         return;
       }
 
       if (res.ok) {
-        setPublishError(null);
-        navigate(`/post/${data.slug}`);
+        setCreateError(null);
+        navigate('/projects');
       }
     } catch (error) {
-      setPublishError('Something went wrong');
+      setCreateError('Something went wrong');
     }
+    // console.log(res)
   };
-
 
   return (
     <div className='p-3 max-w-3xl mx-auto min-h-screen'>
-        <h1 className='text-center text-3xl my-7 font-semibol   d'>
-            Create a post
-        </h1>
-        <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
-            <div className='flex flex-col gap-4 sm:flex-row justify-between'>
-            <TextInput
-            type='text'
-            placeholder='Title'
-            required
-            id='title'
-            className='flex-1'
-            onChange={(e) =>
-              setFormData({ ...formData, title: e.target.value })
-            }
-          />
-          <Select
-            onChange={(e) =>
-              setFormData({ ...formData, category: e.target.value })
-            }
-          >
-            <option value='uncategorized'>Select a category</option>
-            <option value='javascript'>JavaScript</option>
-            <option value='reactjs'>React.js</option>
-            <option value='nextjs'>Next.js</option>
-          </Select>
-        </div>
+      <h1 className='text-center text-3xl my-7 font-semibold'>
+        Create a Project
+      </h1>
+      <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
+        <TextInput
+          type='text'
+          placeholder='Project Title'
+          required
+          id='title'
+          onChange={(e) =>
+            setFormData({ ...formData, title: e.target.value })
+          }
+        />
+        <Select
+          id='type'
+          required
+          onChange={(e) =>
+            setFormData({ ...formData, type: e.target.value })
+          }
+        >
+          <option value=''>Select Project Type</option>
+          <option value='Practice Project'>Practice Project</option>
+          <option value='React Project'>React Project</option>
+          <option value='Flask Project'>Flask Project</option>
+          <option value='Django Project'>Django Project</option>
+          <option value='Machine Learning Project'>Machine Learning Project</option>
+          <option value='MERN Stack Project'>MERN Stack Project</option>
+        </Select>
+        <TextInput
+          type='text'
+          placeholder='Tech Stack (e.g., React, Node.js)'
+          required
+          id='techStack'
+          onChange={(e) =>
+            setFormData({ ...formData, techStack: e.target.value.split(',') })
+          }
+        />
+        <TextInput
+          type='text'
+          placeholder='About Project'
+          required
+          id='about'
+          onChange={(e) =>
+            setFormData({ ...formData, about: e.target.value })
+          }
+        />
+        <TextInput
+          type='url'
+          placeholder='Live Link'
+          
+          id='liveLink'
+          onChange={(e) =>
+            setFormData({ ...formData, liveLink: e.target.value })
+          }
+        />
+        <TextInput
+          type='url'
+          placeholder='GitHub Link'
+          required
+          id='githubLink'
+          onChange={(e) =>
+            setFormData({ ...formData, githubLink: e.target.value })
+          }
+        />
+        <TextInput
+          type='text'
+          placeholder='Learnings'
+          required
+          id='learnings'
+          onChange={(e) =>
+            setFormData({ ...formData, learnings: e.target.value })
+          }
+        />
         <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'>
           <FileInput
             type='file'
@@ -127,7 +169,7 @@ const CreatePost = () => {
             gradientDuoTone='purpleToBlue'
             size='sm'
             outline
-            onClick={handleUpdloadImage}
+            onClick={handleUploadImage}
             disabled={imageUploadProgress}
           >
             {imageUploadProgress ? (
@@ -140,7 +182,6 @@ const CreatePost = () => {
             ) : (
               'Upload Image'
             )}
-           
           </Button>
         </div>
         {imageUploadError && <Alert color='failure'>{imageUploadError}</Alert>}
@@ -151,31 +192,17 @@ const CreatePost = () => {
             className='w-full h-100 object-cover'
           />
         )}
-
-        <ReactQuill
-          theme='snow'
-          placeholder='Write something...'
-          className='h-72 mb-12'
-          required
-          onChange={(value) => {
-            setFormData({ ...formData, content: value });
-          }}
-        />
-
         <Button type='submit' gradientDuoTone='purpleToPink' outline>
-          Publish
+          Create Project
         </Button>
-        {publishError && (
+        {createError && (
           <Alert className='mt-5' color='failure'>
-            {publishError}
+            {createError}
           </Alert>
         )}
-        
-        
-        </form>
-      
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default CreatePost
+export default CreateProject;

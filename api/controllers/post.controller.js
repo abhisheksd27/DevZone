@@ -10,7 +10,7 @@ export const create = async (req, res, next) => {
   }
   const slug = req.body.title
     .split(' ')
-    .join('-')
+    .join('-') 
     .toLowerCase()
     .replace(/[^a-zA-Z0-9-]/g, '');
   const newPost = new Post({
@@ -92,7 +92,7 @@ export const updatepost = async (req, res, next) => {
       req.params.postId,
       {
         $set: {
-          title: req.body.title,
+          title: req.body.title, 
           content: req.body.content,
           category: req.body.category,
           image: req.body.image,

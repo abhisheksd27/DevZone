@@ -1,15 +1,15 @@
 import mongoose from 'mongoose';
 
 const postSchema = new mongoose.Schema(
-  {
+  { 
     userId: {
       type: String,
       required: true,
     },
-    content: {
+    content: { 
       type: String,
       required: true,
-    },
+    }, 
     title: {
       type: String,
       required: true,
@@ -30,7 +30,7 @@ const postSchema = new mongoose.Schema(
       unique: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true } 
 );
 
 const Post = mongoose.model('Post', postSchema);
