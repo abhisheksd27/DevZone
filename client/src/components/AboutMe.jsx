@@ -7,10 +7,10 @@ const AboutMe = () => {
     <div className='flex flex-col sm:flex-row p-3 border border-teal-500 justify-end items-center rounded-tl-3xl rounded-br-3xl text-center '>
       {/* Left Column */}
       <div className="flex-1 justify-center flex flex-col mb-4 sm:mb-0">
-        <h2 className='text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-blue-500 to-indigo-500 transition-transform transform hover:scale-105 animate-pulse'>
+        <h2 className='text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-blue-500 to-indigo-500 transition-transform transform hover:scale-105 '>
           About Me
         </h2>
-        <h3 className='text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-blue-500 to-indigo-500 transition-transform transform hover:scale-105 animate-pulse'>
+        <h3 className='text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-blue-500 to-indigo-500 transition-transform transform hover:scale-105'>
           Hi, I'm Abhishek Shankar
         </h3>
 

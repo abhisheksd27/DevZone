@@ -22,7 +22,7 @@ const Projects = () => {
 
   return (
     <div className='min-h-screen max-w-6xl mx-auto flex flex-col items-center gap-6 p-3'>
-      <h1 className="text-2xl font-bold mt-10 mb-5 text-center text-gradient bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 animate-pulse rounded-lg p-2">
+      <h1 className="text-2xl font-bold mt-10 mb-5 text-center text-gradient bg-gradient-to-r from-purple-400 via-pink-500 to-red-500  rounded-lg p-2">
         Projects
       </h1>
       <p className="text-md text-gray-500 text-center mb-10">
@@ -33,7 +33,7 @@ const Projects = () => {
       </p>
       {projectTypes.map((type, index) => (
         <div key={index} className="w-full">
-          <h2 className="text-2xl font-bold mt-10 mb-5 text-center text-gradient bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 animate-pulse rounded-lg">
+          <h2 className="text-2xl font-bold mt-10 mb-5 text-center text-gradient bg-gradient-to-r from-purple-400 via-pink-500 to-red-500  rounded-lg">
             {type}
           </h2>
           <div className='flex flex-wrap justify-center gap-6'>
@@ -42,7 +42,7 @@ const Projects = () => {
               .map((project, idx) => (
                 <div key={idx} className='project-card border p-5 rounded-lg shadow-md flex flex-col items-center max-w-md transition duration-300 ease-in-out transform hover:scale-105'>
                   <img src={project.image} alt={project.title} className="w-full h-48 object-cover rounded-lg mb-4" />
-                  <h3 className="text-xl font-semibold mb-2 text-center text-gradient bg-gradient-to-r from-green-400 to-blue-500 animate-pulse rounded-lg p-2">
+                  <h3 className="text-xl font-semibold mb-2 text-center text-gradient bg-gradient-to-r from-green-400 to-blue-500  rounded-lg p-2">
                     {project.title}
                   </h3>
                   <div className="mb-2 text-center">

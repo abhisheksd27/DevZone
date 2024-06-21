@@ -3,7 +3,7 @@ import GitHubCalendar from 'react-github-calendar';
 
 const GithubHeatMap = () => {
   return (
-    <div className="p-4 sm:p-6 md:p-8 lg:p-10 bg-gray-900 text-white rounded-lg shadow-md animate-pulse max-w-full overflow-hidden">
+    <div className="p-4 sm:p-6 md:p-8 lg:p-10 bg-gray-900 text-white rounded-lg shadow-md  max-w-full overflow-hidden">
       <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center">GitHub Contributions</h1>
       <div className="flex justify-center overflow-x-auto">
         <div className="w-full" style={{ maxWidth: '100%' }}>

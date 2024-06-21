@@ -34,7 +34,7 @@ const Experience = () => {
         <div className="relative">
           <div className="border-r-4 border-purple-500 absolute h-full top-0" style={{ left: '1.5rem' }}></div>
           {experiences.map((exp, index) => (
-            <div key={index} className="mb-8 flex items-center justify-center animate-pulse">
+            <div key={index} className="mb-8 flex items-center justify-center ">
               <div className="w-10 h-10 rounded-full bg-purple-500 text-white flex items-center justify-center z-10">
                 <FaBriefcase />
               </div>

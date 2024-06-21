@@ -6,7 +6,7 @@ const Education = () => {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold mb-8">Education</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className='animate-pulse'>
+          <div className=''>
             <div className="flex items-start">
               <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-4"></div>
               <div>
@@ -16,7 +16,7 @@ const Education = () => {
               </div>
             </div>
           </div>
-          <div className='animate-pulse'>
+          <div className=''>
             <div className="flex items-start">
               <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-4"></div>
               <div>
@@ -26,7 +26,7 @@ const Education = () => {
               </div>
             </div>
           </div>
-          <div className='animate-pulse'>
+          <div className=''>
             <div className="flex items-start">
               <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-4"></div>
               <div>
