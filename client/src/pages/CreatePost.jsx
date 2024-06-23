@@ -119,17 +119,17 @@ const CreatePost = () => {
             <option value='nextjs'>Machine Learning</option>
             <option value='nextjs'>HTML/CSS</option>
 
-            <option value='javascript'>GeeksforGeeks-Easy</option>
-            <option value='reactjs'>GeeksforGeeks-Medium</option>
-            <option value='nextjs'>GeeksforGeeks-Hard</option>
+            <option value='GeeksforGeeks-Easy'>GeeksforGeeks-Easy</option>
+            <option value='GeeksforGeeks-Medium'>GeeksforGeeks-Medium</option>
+            <option value='GeeksforGeeks-Hard'>GeeksforGeeks-Hard</option>
 
-            <option value='javascript'>HackerRank-Easy</option>
-            <option value='reactjs'>HackerRank-Medium</option>
-            <option value='nextjs'>HackerRank-Hard</option>
+            <option value='HackerRank-Easy'>HackerRank-Easy</option>
+            <option value='HackerRank-Medium'>HackerRank-Medium</option>
+            <option value='HackerRank-Hard'>HackerRank-Hard</option>
 
-            <option value='javascript'>LeetCode-easy</option>
-            <option value='reactjs'>LeetCode-Medium</option>
-            <option value='nextjs'>LeetCode-Hard</option>
+            <option value='LeetCode-easy'>LeetCode-easy</option>
+            <option value='LeetCode-Medium'>LeetCode-Medium</option>
+            <option value='LeetCode-Hard'>LeetCode-Hard</option>
 
 
           </Select>

@@ -7,7 +7,7 @@ import {
   ref,
   uploadBytesResumable,
 } from 'firebase/storage';
-import  app  from '../firebase';
+import app from '../firebase';
 import { useEffect, useState } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -18,34 +18,41 @@ export default function UpdatePost() {
   const [file, setFile] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    _id: '',
+    title: '',
+    content: '',
+    category: '',
+    image: '',
+  });
   const [publishError, setPublishError] = useState(null);
   const { postId } = useParams();
-
   const navigate = useNavigate();
-    const { currentUser } = useSelector((state) => state.user);
+  const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
-    try {
-      const fetchPost = async () => {
+    const fetchPost = async () => {
+      try {
         const res = await fetch(`/api/post/getposts?postId=${postId}`);
         const data = await res.json();
         if (!res.ok) {
-          console.log(data.message);
-          setPublishError(data.message);
-          return;
+          throw new Error(data.message || 'Failed to fetch post');
         }
-        if (res.ok) {
-          setPublishError(null);
-          setFormData(data.posts[0]);
-        }
-      };
+        console.log('Fetched post data:', data.posts[0]);
+        setFormData(data.posts[0]);
+        console.log('FormData after setting:', data.posts[0]);
+      } catch (error) {
+        console.error('Error fetching post:', error);
+        setPublishError(error.message);
+      }
+    };
 
-      fetchPost();
-    } catch (error) {
-      console.log(error.message);
-    }
+    fetchPost();
   }, [postId]);
+
+  useEffect(() => {
+    console.log('FormData changed:', formData);
+  }, [formData]);
 
   const handleUpdloadImage = async () => {
     try {
@@ -73,7 +80,7 @@ export default function UpdatePost() {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setImageUploadProgress(null);
             setImageUploadError(null);
-            setFormData({ ...formData, image: downloadURL });
+            setFormData((prevData) => ({ ...prevData, image: downloadURL }));
           });
         }
       );
@@ -83,30 +90,57 @@ export default function UpdatePost() {
       console.log(error);
     }
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setPublishError(null);
+
+    console.log('FormData at submission:', formData);
+
+    if (!formData._id) {
+      setPublishError('Invalid post ID. Please try refreshing the page.');
+      return;
+    }
+
+    if (!currentUser || !currentUser._id) {
+      setPublishError('User not authenticated. Please log in and try again.');
+      return;
+    }
+
     try {
-      const res = await fetch(`/api/post/updatepost/${formData._id}/${currentUser._id}`, {
+      const url = `/api/post/updatepost/${formData._id}/${currentUser._id}`;
+      console.log('Request URL:', url);
+
+      const res = await fetch(url, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
+
       const data = await res.json();
+      console.log('Server response:', data);
+
       if (!res.ok) {
-        setPublishError(data.message);
-        return;
+        throw new Error(data.message || 'Failed to update post');
       }
 
-      if (res.ok) {
-        setPublishError(null);
-        navigate(`/post/${data.slug}`);
-      }
+      console.log('Update successful:', data);
+      navigate(`/post/${data.slug}`);
     } catch (error) {
-      setPublishError('Something went wrong');
+      console.error('Update post error:', error);
+      setPublishError(error.message || 'Something went wrong while updating the post');
     }
   };
+
+  const handleInputChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
   return (
     <div className='p-3 max-w-3xl mx-auto min-h-screen'>
       <h1 className='text-center text-3xl my-7 font-semibold'>Update post</h1>
@@ -118,14 +152,12 @@ export default function UpdatePost() {
             required
             id='title'
             className='flex-1'
-            onChange={(e) =>
-              setFormData({ ...formData, title: e.target.value })
-            }
+            onChange={handleInputChange}
             value={formData.title}
           />
           <Select
             onChange={(e) =>
-              setFormData({ ...formData, category: e.target.value })
+              setFormData((prevData) => ({ ...prevData, category: e.target.value }))
             }
             value={formData.category}
           >
@@ -133,6 +165,19 @@ export default function UpdatePost() {
             <option value='javascript'>JavaScript</option>
             <option value='reactjs'>React.js</option>
             <option value='nextjs'>Next.js</option>
+            <option value='nodejs'>NodeJs</option>
+            <option value='python'>Python</option>
+            <option value='machine-learning'>Machine Learning</option>
+            <option value='html-css'>HTML/CSS</option>
+            <option value='GeeksforGeeks-Easy'>GeeksforGeeks-Easy</option>
+            <option value='GeeksforGeeks-Medium'>GeeksforGeeks-Medium</option>
+            <option value='GeeksforGeeks-Hard'>GeeksforGeeks-Hard</option>
+            <option value='HackerRank-Easy'>HackerRank-Easy</option>
+            <option value='HackerRank-Medium'>HackerRank-Medium</option>
+            <option value='HackerRank-Hard'>HackerRank-Hard</option>
+            <option value='LeetCode-easy'>LeetCode-easy</option>
+            <option value='LeetCode-Medium'>LeetCode-Medium</option>
+            <option value='LeetCode-Hard'>LeetCode-Hard</option>
           </Select>
         </div>
         <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'>
@@ -176,11 +221,15 @@ export default function UpdatePost() {
           className='h-72 mb-12'
           required
           onChange={(value) => {
-            setFormData({ ...formData, content: value });
+            setFormData((prevData) => ({ ...prevData, content: value }));
           }}
         />
-        <Button type='submit' gradientDuoTone='purpleToPink'>
-          Update post
+        <Button 
+          type='submit' 
+          gradientDuoTone='purpleToPink' 
+          disabled={!formData._id}
+        >
+          {formData._id ? 'Update post' : 'Loading...'}
         </Button>
         {publishError && (
           <Alert className='mt-5' color='failure'>
