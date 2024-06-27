@@ -37,10 +37,10 @@ export default function Home() {
         </div>
         <hr className="h-0 invisible" />
         <h2 className='text-3xl font-bold lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-blue-500 to-indigo-500 transition-transform transform hover:scale-105 py-2 '>
-          Welcome to my Blog
+        Welcome to My Dev Space
         </h2>
         <p className='text-gray-500 text-sm sm:text-base bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 transition-transform transform hover:scale-105 py-1 '>
-          Here you'll find a variety of articles and tutorials on topics such as web development, software engineering, and programming languages.
+        Here you'll find a variety of solutions to LeetCode and other DSA problems, as well as my personal projects.
         </p>
 
         <Link
