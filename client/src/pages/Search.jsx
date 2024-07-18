@@ -114,7 +114,7 @@ export default function Search() {
               type='text'
               value={sidebarData.searchTerm}
               onChange={handleChange}
-            />
+            /> 
           </div>
           <div className='flex items-center gap-2'>
             <label className='font-semibold'>Sort:</label>
@@ -134,6 +134,22 @@ export default function Search() {
               <option value='reactjs'>React.js</option>
               <option value='nextjs'>Next.js</option>
               <option value='javascript'>JavaScript</option>
+              <option value='Nodejs'>NodeJs</option>
+            <option value='python'>Python</option>
+            <option value='machineLearning'>Machine Learning</option>
+            <option value='HTMLCSS'>HTML/CSS</option>
+
+            <option value='gfgeasy'>GeeksforGeeks-Easy</option>
+            <option value='gfgmed'>GeeksforGeeks-Medium</option>
+            <option value='gfghard'>GeeksforGeeks-Hard</option>
+
+            <option value='hackkereasy'>HackerRank-Easy</option>
+            <option value='hackerned'>HackerRank-Medium</option>
+            <option value='hacklerhard'>HackerRank-Hard</option>
+
+            <option value='leetcodeEasy'>LeetCode-easy</option>
+            <option value='Leetcodemed'>LeetCode-Medium</option>
+            <option value='leetcodehard'>LeetCode-Hard</option>
             </Select>
           </div>
           <Button type='submit' outline gradientDuoTone='purpleToPink'>

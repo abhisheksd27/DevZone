@@ -114,22 +114,22 @@ const CreatePost = () => {
             <option value='javascript'>JavaScript</option>
             <option value='reactjs'>React.js</option>
             <option value='nextjs'>Next.js</option>
-            <option value='nextjs'>NodeJs</option>
-            <option value='nextjs'>Python</option>
-            <option value='nextjs'>Machine Learning</option>
-            <option value='nextjs'>HTML/CSS</option>
+            <option value='Nodejs'>NodeJs</option>
+            <option value='python'>Python</option>
+            <option value='machineLearning'>Machine Learning</option>
+            <option value='HTMLCSS'>HTML/CSS</option>
 
-            <option value='javascript'>GeeksforGeeks-Easy</option>
-            <option value='reactjs'>GeeksforGeeks-Medium</option>
-            <option value='nextjs'>GeeksforGeeks-Hard</option>
+            <option value='gfgeasy'>GeeksforGeeks-Easy</option>
+            <option value='gfgmed'>GeeksforGeeks-Medium</option>
+            <option value='gfghard'>GeeksforGeeks-Hard</option>
 
-            <option value='javascript'>HackerRank-Easy</option>
-            <option value='reactjs'>HackerRank-Medium</option>
-            <option value='nextjs'>HackerRank-Hard</option>
+            <option value='hackkereasy'>HackerRank-Easy</option>
+            <option value='hackerned'>HackerRank-Medium</option>
+            <option value='hacklerhard'>HackerRank-Hard</option>
 
-            <option value='javascript'>LeetCode-easy</option>
-            <option value='reactjs'>LeetCode-Medium</option>
-            <option value='nextjs'>LeetCode-Hard</option>
+            <option value='leetcodeEasy'>LeetCode-easy</option>
+            <option value='Leetcodemed'>LeetCode-Medium</option>
+            <option value='leetcodehard'>LeetCode-Hard</option>
 
 
           </Select>
